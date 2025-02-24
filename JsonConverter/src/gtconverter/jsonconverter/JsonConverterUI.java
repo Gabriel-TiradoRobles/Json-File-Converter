@@ -32,6 +32,7 @@ public class JsonConverterUI extends javax.swing.JFrame {
     private static char fileDelimiter = ' ';
     private static boolean headerOptionSelected = false;
     private static boolean firstLineHeader = false;
+    private String convertToTypeExtension = ".json";
     private String[] lines;
     private String[] headers;
     
@@ -81,11 +82,13 @@ public class JsonConverterUI extends javax.swing.JFrame {
         TypeChoiceLabel1 = new javax.swing.JLabel();
         ToTextFile = new javax.swing.JRadioButton();
         ToJsonFile = new javax.swing.JRadioButton();
-        ConvertButton = new javax.swing.JButton();
-        CancelButton = new javax.swing.JButton();
         TargetPathLabel = new javax.swing.JLabel();
         TargetPreviewArea = new javax.swing.JTextField();
         TargetBrowseButton = new javax.swing.JButton();
+        FileNameLabel = new javax.swing.JLabel();
+        FileNameArea = new javax.swing.JTextField();
+        TargetPathLabel1 = new javax.swing.JLabel();
+        ConvertButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("File to JSON Converter");
@@ -101,6 +104,7 @@ public class JsonConverterUI extends javax.swing.JFrame {
 
         ConvertFromGroup.add(FromTextFile);
         FromTextFile.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        FromTextFile.setSelected(true);
         FromTextFile.setText("Text File");
         FromTextFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,15 +349,6 @@ public class JsonConverterUI extends javax.swing.JFrame {
             }
         });
 
-        ConvertButton.setText("Convert");
-        ConvertButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConvertButtonActionPerformed(evt);
-            }
-        });
-
-        CancelButton.setText("Cancel");
-
         TargetPathLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         TargetPathLabel.setText("Target File Location:");
 
@@ -366,63 +361,76 @@ public class JsonConverterUI extends javax.swing.JFrame {
             }
         });
 
+        FileNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        FileNameLabel.setText("New File Name: (Exclude File Extention)");
+
+        FileNameArea.setColumns(10);
+
+        TargetPathLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        TargetPathLabel1.setText("(Blank for Documents as Directory)");
+
         javax.swing.GroupLayout TypeChoicePanel1Layout = new javax.swing.GroupLayout(TypeChoicePanel1);
         TypeChoicePanel1.setLayout(TypeChoicePanel1Layout);
         TypeChoicePanel1Layout.setHorizontalGroup(
             TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TypeChoicePanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TypeChoiceLabel1)
-                    .addGroup(TypeChoicePanel1Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TypeChoiceLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, TypeChoicePanel1Layout.createSequentialGroup()
                         .addComponent(ToTextFile)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ToJsonFile)))
-                .addGap(26, 26, 26)
+                .addGap(30, 30, 30)
                 .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TypeChoicePanel1Layout.createSequentialGroup()
                         .addComponent(TargetPathLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TargetBrowseButton))
-                    .addComponent(TargetPreviewArea, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CancelButton)
-                .addGap(39, 39, 39)
-                .addComponent(ConvertButton)
-                .addGap(38, 38, 38))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TargetBrowseButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TargetPathLabel1))
+                    .addComponent(TargetPreviewArea, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FileNameLabel)
+                    .addComponent(FileNameArea, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12))
         );
         TypeChoicePanel1Layout.setVerticalGroup(
             TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TypeChoicePanel1Layout.createSequentialGroup()
-                .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(TypeChoicePanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TypeChoiceLabel1)
-                            .addComponent(TargetPathLabel)
-                            .addComponent(TargetBrowseButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(ToTextFile)
-                                .addComponent(ToJsonFile))
-                            .addComponent(TargetPreviewArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(TypeChoicePanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ConvertButton)
-                            .addComponent(CancelButton))))
+                .addContainerGap()
+                .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TypeChoiceLabel1)
+                    .addComponent(TargetPathLabel)
+                    .addComponent(TargetBrowseButton)
+                    .addComponent(FileNameLabel)
+                    .addComponent(TargetPathLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ToTextFile)
+                    .addComponent(ToJsonFile)
+                    .addComponent(TargetPreviewArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FileNameArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        ConvertButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ConvertButton.setText("Convert");
+        ConvertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConvertButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TypeChoicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DelimiterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,14 +439,16 @@ public class JsonConverterUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(HeaderListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(FilePreviewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(TypeChoicePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE)))
+                    .addComponent(TypeChoicePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 989, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 378, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(ProgramTitle)
                 .addGap(378, 378, 378))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ConvertButton)
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +468,9 @@ public class JsonConverterUI extends javax.swing.JFrame {
                     .addComponent(HeaderAskPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TypeChoicePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ConvertButton)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -501,8 +513,6 @@ public class JsonConverterUI extends javax.swing.JFrame {
         if (!DelimiterTextField.getText().isEmpty()) {
             fileDelimiter = DelimiterTextField.getText().charAt(0);
         }
-
-        DelimiterExample.setText(String.valueOf(fileDelimiter));
     }//GEN-LAST:event_DelimiterTextFieldKeyReleased
 
     private void NoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoButtonActionPerformed
@@ -518,24 +528,29 @@ public class JsonConverterUI extends javax.swing.JFrame {
         firstLineHeader = true;
         HeaderPreviewArea.setEnabled(false);
         
-        HeaderPreviewArea.setText(lines[0]);
+        if (lines != null && lines.length >= 1) {
+            HeaderPreviewArea.setText(lines[0]);
+        }
     }//GEN-LAST:event_YesButtonActionPerformed
 
     private void ToTextFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToTextFileActionPerformed
         // TODO add your handling code here:
         convertToType = fileType.TEXT;
+        convertToTypeExtension = ".txt";
     }//GEN-LAST:event_ToTextFileActionPerformed
 
     private void ToJsonFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToJsonFileActionPerformed
         // TODO add your handling code here:
         convertToType = fileType.JSON;
+        convertToTypeExtension = ".json";
     }//GEN-LAST:event_ToJsonFileActionPerformed
 
     private void ConvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConvertButtonActionPerformed
         // TODO add your handling code here:
-        String path;
+        String path, fileName;
         int loopOffset;
         
+        // Determines where the converter should start based on if first line are headers
         if (firstLineHeader) {
             loopOffset = 1;
             headers = lines[0].split(String.valueOf(fileDelimiter));
@@ -547,6 +562,7 @@ public class JsonConverterUI extends javax.swing.JFrame {
             System.out.println(headers.length);
         }
         
+        // Determines where the converted file will be saved at
         if (!TargetPreviewArea.getText().isEmpty()) {
             path = TargetPreviewArea.getText();
         }
@@ -554,8 +570,17 @@ public class JsonConverterUI extends javax.swing.JFrame {
             path = ".\\";
         }
         
-        if (headerOptionSelected) {
-            try (FileWriter writer = new FileWriter(path + "\\test.json")) {
+        // Determines the name for the converted file
+        if (!FileNameArea.getText().isEmpty()) {
+            fileName = FileNameArea.getText();
+        }
+        else {
+            fileName = "output";
+        }
+        
+        // Actually writing the file
+        if (headerOptionSelected && !FilePreviewArea.getText().isEmpty()) {
+            try (FileWriter writer = new FileWriter(path + "\\" + fileName + convertToTypeExtension)) {
                 
                 
                 for (int i = loopOffset; i < lines.length; i++) {
@@ -670,7 +695,6 @@ public class JsonConverterUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CancelButton;
     private javax.swing.JButton ConvertButton;
     private javax.swing.ButtonGroup ConvertFromGroup;
     private javax.swing.ButtonGroup ConvertToGroup;
@@ -679,6 +703,8 @@ public class JsonConverterUI extends javax.swing.JFrame {
     private javax.swing.JTextField DelimiterTextField;
     private javax.swing.JLabel Delimiterlabel;
     private javax.swing.JFileChooser FileChooser;
+    private javax.swing.JTextField FileNameArea;
+    private javax.swing.JLabel FileNameLabel;
     private javax.swing.JLabel FilePrevLabel;
     private javax.swing.JLabel FilePrevLabel1;
     private javax.swing.JTextArea FilePreviewArea;
@@ -696,6 +722,7 @@ public class JsonConverterUI extends javax.swing.JFrame {
     private javax.swing.JLabel ProgramTitle;
     private javax.swing.JButton TargetBrowseButton;
     private javax.swing.JLabel TargetPathLabel;
+    private javax.swing.JLabel TargetPathLabel1;
     private javax.swing.JTextField TargetPreviewArea;
     private javax.swing.JRadioButton ToJsonFile;
     private javax.swing.JRadioButton ToTextFile;
