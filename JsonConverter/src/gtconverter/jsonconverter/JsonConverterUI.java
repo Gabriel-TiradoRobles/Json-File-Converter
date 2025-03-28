@@ -56,6 +56,18 @@ public class JsonConverterUI extends javax.swing.JFrame {
         ConvertToGroup = new javax.swing.ButtonGroup();
         FileChooser = new javax.swing.JFileChooser();
         HeaderAskGroup = new javax.swing.ButtonGroup();
+        ConfirmationDialog = new javax.swing.JDialog();
+        dConvFrmLabel = new javax.swing.JLabel();
+        dConvToLabel = new javax.swing.JLabel();
+        dDestinationLabel = new javax.swing.JLabel();
+        dFileLabel = new javax.swing.JLabel();
+        dTitle = new javax.swing.JLabel();
+        dFromLabel = new javax.swing.JLabel();
+        dToLabel = new javax.swing.JLabel();
+        dDestLabel = new javax.swing.JLabel();
+        dFlLabel = new javax.swing.JLabel();
+        dConfirm = new javax.swing.JButton();
+        dCancel = new javax.swing.JButton();
         TypeChoicePanel = new javax.swing.JPanel();
         TypeChoiceLabel = new javax.swing.JLabel();
         FromTextFile = new javax.swing.JRadioButton();
@@ -89,10 +101,121 @@ public class JsonConverterUI extends javax.swing.JFrame {
         FileNameArea = new javax.swing.JTextField();
         TargetPathLabel1 = new javax.swing.JLabel();
         ConvertButton = new javax.swing.JButton();
+        ConvertErrorLabel = new javax.swing.JLabel();
+
+        ConfirmationDialog.setTitle("Conversion Confirmation");
+        ConfirmationDialog.setMinimumSize(new java.awt.Dimension(375, 350));
+        ConfirmationDialog.setModal(true);
+
+        dConvFrmLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dConvFrmLabel.setText("File type converting from:");
+
+        dConvToLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dConvToLabel.setText("File type converting to:");
+
+        dDestinationLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dDestinationLabel.setText("Converted file destination:");
+
+        dFileLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dFileLabel.setText("Converted file name:");
+
+        dTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        dTitle.setText("Confirm Choices");
+
+        dFromLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dFromLabel.setText("Text");
+
+        dToLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dToLabel.setText("Json");
+
+        dDestLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dDestLabel.setText("Text");
+
+        dFlLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dFlLabel.setText("Text");
+
+        dConfirm.setText("Confirm");
+        dConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dConfirmActionPerformed(evt);
+            }
+        });
+
+        dCancel.setText("Cancel");
+        dCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dCancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ConfirmationDialogLayout = new javax.swing.GroupLayout(ConfirmationDialog.getContentPane());
+        ConfirmationDialog.getContentPane().setLayout(ConfirmationDialogLayout);
+        ConfirmationDialogLayout.setHorizontalGroup(
+            ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ConfirmationDialogLayout.createSequentialGroup()
+                .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ConfirmationDialogLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ConfirmationDialogLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(dDestLabel))
+                            .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(ConfirmationDialogLayout.createSequentialGroup()
+                                    .addComponent(dCancel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(dConfirm))
+                                .addGroup(ConfirmationDialogLayout.createSequentialGroup()
+                                    .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dConvFrmLabel)
+                                        .addComponent(dDestinationLabel)
+                                        .addComponent(dFileLabel)
+                                        .addGroup(ConfirmationDialogLayout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(dFromLabel)
+                                                .addComponent(dFlLabel))))
+                                    .addGap(26, 26, 26)
+                                    .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dConvToLabel)
+                                        .addGroup(ConfirmationDialogLayout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(dToLabel)))))))
+                    .addGroup(ConfirmationDialogLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(dTitle)))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        ConfirmationDialogLayout.setVerticalGroup(
+            ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConfirmationDialogLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(dTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dConvFrmLabel)
+                    .addComponent(dConvToLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dFromLabel)
+                    .addComponent(dToLabel))
+                .addGap(18, 18, 18)
+                .addComponent(dDestinationLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dDestLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dFileLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dFlLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(ConfirmationDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dConfirm)
+                    .addComponent(dCancel))
+                .addGap(17, 17, 17))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("File to JSON Converter");
-        setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
 
         TypeChoicePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -390,7 +513,7 @@ public class JsonConverterUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TargetPathLabel1))
                     .addComponent(TargetPreviewArea, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(TypeChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FileNameLabel)
                     .addComponent(FileNameArea, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -423,6 +546,12 @@ public class JsonConverterUI extends javax.swing.JFrame {
             }
         });
 
+        ConvertErrorLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ConvertErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        ConvertErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ConvertErrorLabel.setText("One or more field(s) are invalid");
+        ConvertErrorLabel.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -439,7 +568,7 @@ public class JsonConverterUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(HeaderListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(FilePreviewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(TypeChoicePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 989, Short.MAX_VALUE))
+                    .addComponent(TypeChoicePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -447,6 +576,8 @@ public class JsonConverterUI extends javax.swing.JFrame {
                 .addGap(378, 378, 378))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ConvertErrorLabel)
+                .addGap(18, 18, 18)
                 .addComponent(ConvertButton)
                 .addGap(23, 23, 23))
         );
@@ -469,9 +600,14 @@ public class JsonConverterUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TypeChoicePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ConvertButton)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ConvertButton)
+                    .addComponent(ConvertErrorLabel))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
+
+        ConvertErrorLabel.setText("");
+        ConvertErrorLabel.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -547,6 +683,73 @@ public class JsonConverterUI extends javax.swing.JFrame {
 
     private void ConvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConvertButtonActionPerformed
         // TODO add your handling code here:
+        
+        // Recheck preview area incase any changes were made before conversion
+        lines = FilePreviewArea.getText().split("\\n");
+        
+        System.out.println("Line Count: " + lines.length);
+        System.out.println(TargetPreviewArea.getText());
+        System.out.println(FileNameArea.getText());
+        
+        if (lines.length > 1 && headerOptionSelected && (!FileNameArea.getText().trim().isEmpty())) {
+            // Set labels in dialog box
+            dFromLabel.setText(getFileTypeText(convertFromType));
+            dToLabel.setText(getFileTypeText(convertToType));
+            dDestLabel.setText(TargetPreviewArea.getText());
+            dFlLabel.setText(FileNameArea.getText());
+
+            // Rehide error label if visible
+            ConvertErrorLabel.setText("");
+            
+            // Open dialog box
+            ConfirmationDialog.setVisible(true);
+        }
+        else {
+            // Show error label if not all fields entered
+            ConvertErrorLabel.setText("One or more field(s) are invalid");
+        }
+        
+    }//GEN-LAST:event_ConvertButtonActionPerformed
+
+    private String getFileTypeText(fileType _type) {
+        switch (_type) {
+            case (fileType.JSON):
+                return "JSON";
+                
+            case (fileType.TEXT):
+                return "Text";
+                
+            default:
+                return "N/A";
+        }
+    }
+    
+    private void TargetBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TargetBrowseButtonActionPerformed
+        // TODO add your handling code here:
+        if (FileChooser.getFileFilter() != null) {
+            FileChooser.removeChoosableFileFilter(FileChooser.getFileFilter());
+        }
+        
+        FileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnVal = FileChooser.showOpenDialog(this);
+        
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = FileChooser.getSelectedFile();
+            TargetPreviewArea.setText(file.getAbsolutePath());
+        }
+        else {
+            System.out.println("File browsing canceled by user.");
+        }
+    }//GEN-LAST:event_TargetBrowseButtonActionPerformed
+
+    private void dCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dCancelActionPerformed
+        // TODO add your handling code here:
+        ConfirmationDialog.setVisible(false);
+        
+    }//GEN-LAST:event_dCancelActionPerformed
+
+    private void dConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dConfirmActionPerformed
+        // TODO add your handling code here:
         String path, fileName;
         int loopOffset;
         
@@ -578,61 +781,63 @@ public class JsonConverterUI extends javax.swing.JFrame {
             fileName = "output";
         }
         
-        // Actually writing the file
+        // Converting the text into a JSON File
         if (headerOptionSelected && !FilePreviewArea.getText().isEmpty()) {
             try (FileWriter writer = new FileWriter(path + "\\" + fileName + convertToTypeExtension)) {
                 
+                // Opening bracket for Json File
+                writer.write("[\n");
                 
+                // Loop through each line to convert into a JSON object
                 for (int i = loopOffset; i < lines.length; i++) {
                     String[] columns = lines[i].split(String.valueOf(fileDelimiter));
                     
-                    writer.write("{\n");
+                    writer.write("\t{\n");
                     
                     for (int n = 0; n < headers.length; n++) {
-                        writer.write("\t\"" + headers[n] + "\": ");
+                        writer.write("\t\t\"" + headers[n] + "\": ");
+                        
                         // check if value is a number for conversion
                         try {
-                          Integer.parseInt(columns[n]);  
+                            // Attempt to convert value into a number
+                            Integer.parseInt(columns[n]);  
                           
-                          writer.write(columns[n] + ",\n");
+                            // Check to not inclue a comma on the final key:value of the current JSON object
+                            if (n >= headers.length - 1) {
+                                writer.write(columns[n] + "\n");
+                            }
+                            else {
+                                writer.write(columns[n] + ",\n");
+                            }
                         }
                         catch (NumberFormatException e) {
-                            writer.write("\"" + columns[n] + "\",\n");
+                            // Check to not inclue a comma on the final key:value of the current JSON object
+                            if (n >= headers.length - 1) {
+                              writer.write("\"" + columns[n] + "\"\n");
+                            }
+                            else {
+                                writer.write("\"" + columns[n] + "\",\n");
+                            }
                         }
                     }
                     
-                    // Check to cap off json file at end of file
+                    // Check to cap off final JSON object at end of file
                     if (i >= lines.length - 1) {
-                        writer.write("}\n");
+                        writer.write("\t}\n");
                     }
                     else {
-                        writer.write("},\n");
+                        writer.write("\t},\n");
                     }
                 }
+                
+                // Closing bracket for Json File
+                writer.write("]\n");
             }
             catch (IOException e) {
                 System.out.println("An error occured writing to file: " + e.getMessage());
             }
         }
-    }//GEN-LAST:event_ConvertButtonActionPerformed
-
-    private void TargetBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TargetBrowseButtonActionPerformed
-        // TODO add your handling code here:
-        if (FileChooser.getFileFilter() != null) {
-            FileChooser.removeChoosableFileFilter(FileChooser.getFileFilter());
-        }
-        
-        FileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int returnVal = FileChooser.showOpenDialog(this);
-        
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = FileChooser.getSelectedFile();
-            TargetPreviewArea.setText(file.getAbsolutePath());
-        }
-        else {
-            System.out.println("File browsing canceled by user.");
-        }
-    }//GEN-LAST:event_TargetBrowseButtonActionPerformed
+    }//GEN-LAST:event_dConfirmActionPerformed
 
     private void setFileFilters () {
         FileFilter textFilter = new FileNameExtensionFilter("Text file", "txt");
@@ -695,7 +900,9 @@ public class JsonConverterUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog ConfirmationDialog;
     private javax.swing.JButton ConvertButton;
+    private javax.swing.JLabel ConvertErrorLabel;
     private javax.swing.ButtonGroup ConvertFromGroup;
     private javax.swing.ButtonGroup ConvertToGroup;
     private javax.swing.JLabel DelimiterExample;
@@ -731,6 +938,17 @@ public class JsonConverterUI extends javax.swing.JFrame {
     private javax.swing.JPanel TypeChoicePanel;
     private javax.swing.JPanel TypeChoicePanel1;
     private javax.swing.JRadioButton YesButton;
+    private javax.swing.JButton dCancel;
+    private javax.swing.JButton dConfirm;
+    private javax.swing.JLabel dConvFrmLabel;
+    private javax.swing.JLabel dConvToLabel;
+    private javax.swing.JLabel dDestLabel;
+    private javax.swing.JLabel dDestinationLabel;
+    private javax.swing.JLabel dFileLabel;
+    private javax.swing.JLabel dFlLabel;
+    private javax.swing.JLabel dFromLabel;
+    private javax.swing.JLabel dTitle;
+    private javax.swing.JLabel dToLabel;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
